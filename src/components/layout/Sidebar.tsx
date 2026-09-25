@@ -16,11 +16,19 @@ interface SidebarProps {
   onCloseMobile?: () => void;
 }
 
+interface NavItem {
+  label: string;
+  href: string;
+  icon: React.ReactNode;
+  active: boolean;
+  badge?: string;
+}
+
 export const Sidebar: React.FC<SidebarProps> = ({ onCloseMobile }) => {
   const pathname = usePathname();
   const { user, logout } = useAuth();
 
-  const navItems = [
+  const navItems: NavItem[] = [
     {
       label: 'Products',
       href: '/products',
